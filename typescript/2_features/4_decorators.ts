@@ -1,4 +1,5 @@
 function log(target: any, key: string, value: any) {
+    console.log('transforming...')
     return {
         value: function (...args: any[]) {
             var a = args.map(a => JSON.stringify(a)).join();
