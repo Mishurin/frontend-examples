@@ -19,5 +19,11 @@
   "homepage": "https://github.com/Mishurin/frontend-examples#readme",
   "devDependencies": {
     "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.0.36",
+    "@types/lodash": "^4.14.72",
+    "@types/node": "^8.0.20",
+    "express": "^4.15.4"
   }
 }
