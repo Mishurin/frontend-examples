@@ -19,7 +19,10 @@ if (argv.d) {
 function run() {
     let toBeRun = commands.join(' && ');
     console.log(`Executing...\n${toBeRun}\n`)
-    childProcess.exec(commands.join('&&'), (e, stdout, stderr) => {
+    let child = childProcess.exec(commands.join('&&'), (e, stdout, stderr) => {
         console.log(stdout);
+    });
+    child.stdout.on('data', function(data) {
+        console.log(data.toString()); 
     });
 }

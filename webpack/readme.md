@@ -5,7 +5,7 @@ Agenda
  - Webpack alternatives to start with Angular2+
 
 
-An example of the command to run custom webpack runner for webpack overview module:
+An example of the command to run a custom webpack runner for the webpack overview module:
  `npm run wp -- -d 1 -w "webpack entry.js bundle.js --colors"`
 
   - 1 - index of file inside of the webpack folder
