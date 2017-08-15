@@ -1,3 +1,5 @@
 node_modules
 typescript/**/*.js
 typescript/~$*.pptx
+webpack/~$*.pptx
+webpack/**/build
