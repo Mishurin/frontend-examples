@@ -3,3 +3,4 @@ typescript/**/*.js
 typescript/~$*.pptx
 webpack/~$*.pptx
 webpack/**/build
+webpack/**/dist/*.css
