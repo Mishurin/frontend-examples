@@ -1,0 +1,10 @@
+body {
+    background: lightblue;
+    background: url('./images/bg.jpg') no-repeat;
+    background-size: 100%;
+}
+
+i.fa {
+    font-size: 40px;
+    color: orange;
+}
