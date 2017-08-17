@@ -6,3 +6,4 @@ webpack/**/build
 webpack/**/dist/*.css
 webpack/4_asset_management/dist
 webpack/5_chunks/dist
+jspm_packages

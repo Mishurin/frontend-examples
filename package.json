@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "wp": "node ./bin/wp.js"
+    "wp": "node ./bin/wp.js",
+    "jspm": "./node_modules/.bin/jspm"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "glob": "^7.1.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "jspm": "^0.16.53",
     "optimist": "^0.6.1",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.18.2",
@@ -53,5 +55,16 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "material-design-lite": "^1.3.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "webpack/extras/dist"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.6.5"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^2.0.7"
+    }
   }
 }
