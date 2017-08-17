@@ -1,5 +1,6 @@
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -44,5 +45,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html'
-        })]
+        }),
+        new ManifestPlugin()
+    ],
+    //devtool: 'source-map'
 };
