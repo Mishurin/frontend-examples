@@ -5,3 +5,4 @@ webpack/~$*.pptx
 webpack/**/build
 webpack/**/dist/*.css
 webpack/4_asset_management/dist
+webpack/5_chunks/dist
