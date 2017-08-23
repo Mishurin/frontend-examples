@@ -1,6 +1,7 @@
 node_modules
 typescript/**/*.js
 typescript/~$*.pptx
+angular/~$*.pptx
 webpack/~$*.pptx
 webpack/**/build
 webpack/**/dist/*.css

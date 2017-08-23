@@ -25,4 +25,7 @@ function run() {
     child.stdout.on('data', function(data) {
         console.log(data.toString()); 
     });
+    child.stdout.on('error', function(err) {
+        console.log(err); 
+    });
 }
