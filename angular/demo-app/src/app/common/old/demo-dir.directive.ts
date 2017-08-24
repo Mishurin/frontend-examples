@@ -9,7 +9,7 @@ export class DemoDirDirective implements ng.IDirective {
     restrict = 'E';
     scope = {
         everySecond: '=',
-        five5Secs: '=',
+        five5Secs: '='
     }
     link = linkFn;
     template =  `
@@ -25,7 +25,7 @@ interface DemoDirDirectiveScope extends ng.IScope {
 }
 
 class DemoDirDirectiveCtrl implements ng.IController {
-    static $inject = ['$window', '$scope']
+    static $inject = ['$window', '$scope'];
     prop = 'World';
     constructor(public $window: ng.IWindowService, public $scope: DemoDirDirectiveScope) {
         setInterval(() => {
