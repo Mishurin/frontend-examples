@@ -1,6 +1,7 @@
 node_modules
 typescript/**/*.js
 typescript/~$*.pptx
+bootstrap/~$*.pptx
 angular/~$*.pptx
 webpack/~$*.pptx
 webpack/**/build
@@ -8,3 +9,4 @@ webpack/**/dist/*.css
 webpack/4_asset_management/dist
 webpack/5_chunks/dist
 jspm_packages
+bootstrap/**/dist
