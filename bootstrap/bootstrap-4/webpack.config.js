@@ -61,6 +61,10 @@ module.exports = {
             template: './src/index.html',
             filename: 'index.html'
         }),
+        new HtmlWebpackPlugin({
+            template: './src/html/grid.html',
+            filename: 'grid.html',
+        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',

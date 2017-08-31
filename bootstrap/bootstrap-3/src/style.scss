@@ -1,4 +1,12 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
 .centered-button-container {
     text-align: center;
     margin-top: 50px;
 }
+
+
+.a {
+    @include clearfix();
+}
+

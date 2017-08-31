@@ -58,16 +58,28 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html',
+            filename: 'index.html'
         }),
         new HtmlWebpackPlugin({
             template: './src/html/grid.html',
-            filename: 'grid.html',
+            filename: 'grid.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/html/positioning.html',
+            filename: 'positioning.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/html/visibility.html',
+            filename: 'visibility.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/html/offsets.html',
+            filename: 'offsets.html'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-            'window.jQuery': 'jquery',
+            'window.jQuery': 'jquery'
         })
     ],
     devtool: 'source-map'
