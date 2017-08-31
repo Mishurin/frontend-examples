@@ -6,8 +6,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 module.exports = {
     context: __dirname,
     entry: {
-        'main': './src/app.js',
-        'vendor': './src/vendor.js'
+        'main': './src/app.js'
     },
     output: {
         filename: '[name].js',
@@ -59,11 +58,16 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/html/grid.html',
+            filename: 'grid.html',
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
         })
     ],
     devtool: 'source-map'
