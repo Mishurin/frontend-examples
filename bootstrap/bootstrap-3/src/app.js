@@ -1,6 +1,6 @@
 // JavaScript
 import 'bootstrap-sass';
-
+// import 'bootstrap';
 // CSS
 // import 'bootstrap/dist/css/bootstrap.css';
 // import './bootstrap.less';
