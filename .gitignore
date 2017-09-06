@@ -4,6 +4,7 @@ typescript/~$*.pptx
 bootstrap/~$*.pptx
 angular/~$*.pptx
 webpack/~$*.pptx
+redux/~$*.pptx
 webpack/**/build
 webpack/**/dist/*.css
 webpack/4_asset_management/dist

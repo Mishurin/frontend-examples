@@ -10,7 +10,8 @@
     "jspm": "./node_modules/.bin/jspm",
     "typescript-webpack-example": "webpack-dev-server --config ./typescript/4_angular/webpack.config.js",
     "b3": "webpack-dev-server --config ./bootstrap/bootstrap-3/webpack.config.js",
-    "b4": "webpack-dev-server --config ./bootstrap/bootstrap-4/webpack.config.js"
+    "b4": "webpack-dev-server --config ./bootstrap/bootstrap-4/webpack.config.js",
+    "rx1": "webpack-dev-server --config ./redux/vanilla/webpack.config.js"
   },
   "repository": {
     "type": "git",
