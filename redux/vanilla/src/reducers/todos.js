@@ -28,7 +28,7 @@ export function todos(state = initialState, action) {
             return { ... state, filters: 'all'}
         case ACTIONS.TOGGLE_ACTIVE:
             return { ... state, filters: 'active'}
-        case ACTIONS.TOGGLE_ACTIVE:
+        case ACTIONS.TOGGLE_COMPLETED:
             return { ... state, filters: 'completed'}
         default:
             return state

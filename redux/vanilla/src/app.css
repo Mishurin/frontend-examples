@@ -1,3 +1,21 @@
+.app-title {
+    text-align: center;
+    color: #1B5164;
+}
+.input-group {
+    text-align: center;
+}
+.app {
+    margin: 0 auto;
+    width: 500px;
+}
+.todos {
+    list-style: none;
+    text-align: center;
+}
 .is-completed {
     text-decoration: line-through;
+}
+.filters {
+    text-align: center;
 }

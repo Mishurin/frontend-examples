@@ -12,25 +12,25 @@ function renderList(list, filters) {
     list.forEach(item => {
         switch(filters) {
             case 'active':
-                if(!item.complteted) result.push(renderItem(item))
+                if(!item.completed) result.push(renderItem(item))
                 break
             case 'completed':
-                if(item.complteted) result.push(renderItem(item))
+                if(item.completed) result.push(renderItem(item))
                 break
             default:
                 result.push(renderItem(item))
         }
     })
-    return result.join('');
+    return `<ul class="todos">${result.join('')}</ul>`;
 }
 
 function renderItem(item) {
     return `
         <li class="todo${item.completed? ' is-completed' : ''}" 
             data-text="${item.text}">
-            ${item.text}
             <input type="checkbox" class="todo-check"
-                ${item.completed? 'checked' : ''} />
+            ${item.completed? 'checked' : ''} />
+            ${item.text}
             <button type="button" class="del-btn">-</button>
         </li>
     `
@@ -38,14 +38,16 @@ function renderItem(item) {
 
 function renderInput() {
     return `
-        <input type="text" id="add-text" />
-        <button type="button" id="add-btn">+</button>
+        <div class="input-group">
+            <input type="text" id="add-text" autofocus />
+            <button type="button" id="add-btn">+</button>
+        </div>
     `
 }
 
 function renderFilters(filters) {
     return `
-        <div>
+        <div class="filters">
             <label for="completed">All</label>
             <input type="checkbox" 
                 id="all"
@@ -68,12 +70,16 @@ export function render(store) {
 }
 
 export function bindEvents(store) {
-    const EVENT_LIST = ['click', 'change']
+    const EVENT_LIST = ['click', 'change', 'keydown']
     
     EVENT_LIST.forEach((event) => {
         document.body.addEventListener(event, (e) => {
 
             if(e.target.id === 'add-btn') {
+                addTodo(store)
+            }
+
+            if(e.target.id === 'add-text' && e.type == 'keydown' && e.key == 'Enter') {
                 addTodo(store)
             }
 
@@ -94,7 +100,6 @@ export function bindEvents(store) {
             }
 
             if(e.target.id === 'completed' && e.type == 'change') {
-                debugger;
                 toggleCompleted(store)
             }
     
@@ -115,14 +120,14 @@ function toggleTodo(el, store) {
     store.dispatch(toggleTodoActionCreator(el.closest('li').getAttribute('data-text')))
 }
 
-function toggleAll() {
-
+function toggleAll(store) {
+    store.dispatch(toggleAllActionCreator())
 }
 
-function toggleActive() {
-
+function toggleActive(store) {
+    store.dispatch(toggleActiveActionCreator())
 }
 
-function toggleCompleted() {
-
+function toggleCompleted(store) {
+    store.dispatch(toggleCompletedActionCreator())
 }

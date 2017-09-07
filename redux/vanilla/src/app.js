@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 import { todos } from './reducers/todos'
-import { render, bindEvents } from './view/app'
+import { render, bindEvents } from './view/todos'
 import './app.css'
 
 const appStore = createStore(todos)
