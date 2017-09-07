@@ -1,16 +1,37 @@
-import { addTodo } from '../actions/todos'
+import { 
+    addTodo as addTodoActionCreator, 
+    toggleTodo as toggleTodoActionCreator,
+    removeTodo as removeTodoActionCreator,
+    toggleAll as toggleAllActionCreator,
+    toggleActive as toggleActiveActionCreator,
+    toggleCompleted as toggleCompletedActionCreator
+} from '../actions/todos'
 
-function renderList(list) {
+function renderList(list, filters) {
     const result = [];
-    list.forEach(item => result.push(renderItem(item)))
-    return result.join("");
+    list.forEach(item => {
+        switch(filters) {
+            case 'active':
+                if(!item.complteted) result.push(renderItem(item))
+                break
+            case 'completed':
+                if(item.complteted) result.push(renderItem(item))
+                break
+            default:
+                result.push(renderItem(item))
+        }
+    })
+    return result.join('');
 }
 
 function renderItem(item) {
     return `
-        <li class="todo">
-        ${item.text}
-        <input type="checkbox" class="todo-check" />
+        <li class="todo${item.completed? ' is-completed' : ''}" 
+            data-text="${item.text}">
+            ${item.text}
+            <input type="checkbox" class="todo-check"
+                ${item.completed? 'checked' : ''} />
+            <button type="button" class="del-btn">-</button>
         </li>
     `
 }
@@ -22,19 +43,28 @@ function renderInput() {
     `
 }
 
-function renderFilters() {
+function renderFilters(filters) {
     return `
-        <label for="completed">Completed</label>
-        <input type="checkbox" class="show-completed" id="completed" />
-        <label for="active">Active</label>
-        <input type="checkbox" class="show-active" id="active" />
-        <label for="all">All</label>
-        <input type="checkbox" class="show-all"  id="all" />
+        <div>
+            <label for="completed">All</label>
+            <input type="checkbox" 
+                id="all"
+                ${filters === 'all' ? 'checked' : ''} />
+            <label for="active">Active</label>
+            <input type="checkbox" 
+                id="active" 
+                ${filters === 'active' ? 'checked' : ''} />
+            <label for="all">Completed</label>
+            <input type="checkbox" 
+                id="completed" 
+                ${filters === 'completed' ? 'checked' : ''} />
+        </div>
     `
 }
 
 export function render(store) {
-    return [renderInput(), renderList(store.getState().todos), renderFilters()].reduce((pr, cur) => pr + cur)
+    const state = store.getState();
+    return [renderInput(), renderList(state.todos, state.filters), renderFilters(state.filters)].reduce((pr, cur) => pr + cur)
 }
 
 export function bindEvents(store) {
@@ -42,24 +72,57 @@ export function bindEvents(store) {
     
     EVENT_LIST.forEach((event) => {
         document.body.addEventListener(event, (e) => {
-            if(e.target.classList.contains('todo') && e.type == 'click') {
-                alert('Click')
-            }
-    
-            if(e.target.classList.contains('todo-check') && e.type == 'change') {
-                alert('Change')
-            }
-    
+
             if(e.target.id === 'add-btn') {
-                addTodoHandler(store)
+                addTodo(store)
+            }
+
+            if(e.target.classList.contains('del-btn') && e.type == 'click') {
+                removeTodo(e.target, store)
+            }
+
+            if(e.target.classList.contains('todo-check') && e.type == 'change') {
+                toggleTodo(e.target, store)
+            }
+
+            if(e.target.id === 'all' && e.type == 'change') {
+                toggleAll(store)
+            }
+
+            if(e.target.id === 'active' && e.type == 'change') {
+                toggleActive(store)
+            }
+
+            if(e.target.id === 'completed' && e.type == 'change') {
+                debugger;
+                toggleCompleted(store)
             }
     
         })
     }, this)
 }
 
-function addTodoHandler(store) {
+function addTodo(store) {
     const input = document.getElementById('add-text')
-    store.dispatch(addTodo(input.value))
+    store.dispatch(addTodoActionCreator(input.value))
 }
 
+function removeTodo(el, store) {
+    store.dispatch(removeTodoActionCreator(el.closest('li').getAttribute('data-text')))
+}
+
+function toggleTodo(el, store) {
+    store.dispatch(toggleTodoActionCreator(el.closest('li').getAttribute('data-text')))
+}
+
+function toggleAll() {
+
+}
+
+function toggleActive() {
+
+}
+
+function toggleCompleted() {
+
+}
