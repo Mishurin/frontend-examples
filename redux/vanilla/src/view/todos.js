@@ -75,7 +75,7 @@ export function bindEvents(store) {
     EVENT_LIST.forEach((event) => {
         document.body.addEventListener(event, (e) => {
 
-            if(e.target.id === 'add-btn') {
+            if(e.target.id === 'add-btn' && e.type == 'click') {
                 addTodo(store)
             }
 

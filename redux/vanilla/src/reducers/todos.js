@@ -19,7 +19,7 @@ const initialState = {
 export function todos(state = initialState, action) {
     switch (action.type) {
         case ACTIONS.ADD_TODO:
-            return { ...state, todos: [...state.todos].concat(action.payload) }
+            return { ...state, todos: [...state.todos].concat({...action.payload } ) }
         case ACTIONS.TOGGLE_TODO:
             return { ...state, todos: getTodosWithToggledTodo(action.payload.text, state.todos) }
         case ACTIONS.REMOVE_TODO:
